@@ -1,0 +1,54 @@
+{
+  "ForegroundDetection": {
+    "Preprocessing": {
+      "GradientThreshold": 0.75,
+      "GlobalUpdateRate": 5,
+      "GridSize": 4
+    },
+    "GMM": {
+      "WindowSize": 500,
+      "NumberGmms": 3,
+      "StdThreshold": 3,
+      "InitSigma2": 10,
+      "BackgroundThreshold": 0.8,
+      "SupportRate": 0.01
+    },
+    "Postprocessing": {
+      "ShadowBrightThreshold": 0.7,
+      "ShadowChromaThreshold": 3.0,
+      "HighlightThreshold": 1.2,
+      "MinRegionWidth": 5,
+      "MinRegionHeight": 10,
+      "MedianFilterSize": 5
+    }
+  },
+  "Tracking": {
+    "DataAssociation": {
+      "Alpha": 0.5,
+      "MaxDistance": 1200,
+      "CostType": "FixedDistance",
+      "AlgorithmType": "LAP"
+    },
+    "KalmanFilter": {
+      "MaxOverlapPropagation": 30,
+      "MaxLostPropagation": 20,
+      "MaxPropagationNoRecord": 10
+    },
+    "MeanShiftFilter": {
+      "NumberBins": 32,
+      "MaxIteration": 5,
+      "HistogramUpdateRate": 0.05,
+      "BHCoeffThreshold": 0.8
+    },
+    "Miscellaneousness": {
+      "ObjectSizeUpdateRate": 0.05,
+      "MinDisplayDuration": 30,
+      "StopDuration": 50,
+      "MaxAllowedTracks": 20,
+      "MinBoxHeight": 10,
+      "MinBoxWidth": 5,
+      "ExtensionHight": 10,
+      "ExtensionWidth": 5
+    }
+  }
+}

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <APTSurveillanceDir>..\..\..</APTSurveillanceDir>
+    <APTSurveillanceBuildDir>$(APTSurveillanceDir)\Build\VC14.0</APTSurveillanceBuildDir>
+    <LibPrefix>APT</LibPrefix>
+    <DevDir>C:\dev</DevDir>
+    <APTExternalDir>$(DevDir)\APTExternal</APTExternalDir>
+    <BoostDir>$(APTExternalDir)\boost_1_63_0</BoostDir>
+    <PythonDir>$(APTExternalDir)\python2.7\64bit</PythonDir>
+	<OpenCVDir>$(APTExternalDir)\opencv_3_4_1</OpenCVDir>
+	<Glog>$(APTExternalDir)\glog</Glog>
+	<Gflags>$(APTExternalDir)\gflags</Gflags>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutDir>$(APTSurveillanceBuildDir)\$(Configuration)\</OutDir>
+    <IntDir>$(APTSurveillanceBuildDir)\$(Configuration)\obj\$(TargetName)\</IntDir>
+    <TargetName>$(LibPrefix)$(ProjectName)$(LibSuffix)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(BoostDir);$(OpenCVDir)\include;$(Glog)\include;$(Gflags)\include;$(APTSurveillanceDir)\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(BoostDir)\x64\vc14\lib;$(OpenCVDir)\x64\vc14\lib;$(Glog)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies Condition=" '$(Configuration)' == 'Debug' ">opencv_world341d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+	  <AdditionalDependencies Condition=" '$(Configuration)' == 'Release' ">opencv_world341.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="APTSurveillanceDir">
+      <Value>$(APTSurveillanceDir)</Value>
+    </BuildMacro>
+    <BuildMacro Include="APTSurveillanceBuildDir">
+      <Value>$(APTSurveillanceBuildDir)</Value>
+    </BuildMacro>
+    <BuildMacro Include="LibPrefix">
+      <Value>$(LibPrefix)</Value>
+    </BuildMacro>
+    <BuildMacro Include="DevDir">
+      <Value>$(DevDir)</Value>
+    </BuildMacro>
+    <BuildMacro Include="APTExternalDir">
+      <Value>$(APTExternalDir)</Value>
+    </BuildMacro>
+    <BuildMacro Include="BoostDir">
+      <Value>$(BoostDir)</Value>
+    </BuildMacro>
+    <BuildMacro Include="PythonDir">
+      <Value>$(PythonDir)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>
